@@ -1,0 +1,78 @@
+package com.example.sarajevotransitapp.database.functions
+
+import com.example.sarajevotransitapp.database.entities.routes
+
+object routetypes {
+    fun types_of_route(): List<routes> {
+        val routes = listOf(
+            routes(1, "Baščaršija - Željeznička Stanica [1]", 1, "Crvena"),
+            routes(2, "Baščaršija - Čengić Vila [2]", 1, "Narandžasta"),
+            routes(3, "Baščaršija - Ilidža [3]", 1, "Narandžasta"),
+            routes(4, "Ilidža - Željeznička Stanica [4]", 1, "Žuta"),
+            routes(5, "Nedžarići - Baščaršija [5]", 1, "Žuta"),
+            routes(6, "Ilidža - Skenderija [6]", 1, "Crvena"),
+            routes(14, "Dom Armije - Podhrastovi [14]", 4, "Ljubičasta"),
+            routes(18, "Drvenija - Pofalići [18]", 4, "Ljubičasta"),
+            routes(24, "Stup - Smiljevići [24]", 4, "Ljubičasta"),
+            routes(29, "Sutjeska - Kamenica [29]", 4, "Ljubičasta"),
+            routes(30, "Ilidža - Hadžići - Drozgometva [30]", 4, "Ljubičasta"),
+            routes(32, "Ilidža - Butmir - Kotorac [32]", 4, "Ljubičasta"),
+            routes(33, "Ilidža - Tarčin - Vukovići [33]", 4, "Ljubičasta"),
+            routes(36, "Nedžarići - Aerodromsko Naselje [36]", 4, "Ljubičasta"),
+            routes(43, "Ilidža - Osjek [43]", 5, "Svijetlo-plava"),
+            routes(44, "Franje Račkog - Bjelašnica", 5, "Svijetlo-plava"),
+            routes(46, "Ilidža - Vlakovo [46]", 4, "Ljubičasta"),
+            routes(49, "Ilidža - Otes- Doglodi [49]", 4, "Ljubičasta"),
+            routes(51, "Baščaršija - Vratnik [51]", 5, "Svijetlo-plava"),
+            routes(52, "Kovači - Gornji Faletići [52]", 5, "Svijetlo-plava"),
+            routes(55, "Kovači - Sedrenik [55]", 5, "Svijetlo-plava"),
+            routes(56, "Trg Austrije - Jarčedoli [56]", 5, "Svijetlo-plava"),
+            routes(58, "Mihrivode - Baščaršija [58]", 5, "Svijetlo-plava"),
+            routes(98, "Trg Austrije - Vidikovac [98]", 5, "Svijetlo-plava"),
+            routes(101, "Trg Austrije - Otoka [101]", 2, "Zelena"),
+            routes(102, "Otoka - Jezero [102]", 2, "Zelena"),
+            routes(103, "Dobrinja - Trg Austrije [103]", 2, "Zelena"),
+            routes(104, "Mojmilo - Trg Austrije [104]", 2, "Zelena"),
+            routes(107, "Dobrinja - Jezero [107]", 2, "Zelena"),
+            routes(108, "Dobrinja - Otoka [108]", 2, "Zelena"),
+            routes(150, "Željeznička Stanica - Buća Potok [15]", 4, "Ljubičasta"),
+            routes(151, "Otoka - Buća Potok [15b]", 4, "Ljubičasta"),
+            routes(160, "Dom Armije - Bare [16]", 4, "Ljubičasta"),
+            routes(161, "Dom Armije - Koševsko Brdo [16b]", 5, "Svijetlo-plava"),
+            routes(170, "Dom Armije - Breka [17]", 4, "Ljubičasta"),
+            routes(171, "Dom Armije - Breka II [17b]", 5, "Svijetlo-plava"),
+            routes(200, "Park - Jagomir [20]", 5, "Svijetlo-plava"),
+            routes(201, "Park - Šip - Bušća [20b]", 5, "Svijetlo-plava"),
+            routes(210, "Sutjeska - Vogošća [21]", 4, "Ljubičasta"),
+            routes(211, "Sutjeska - Donja Vogošća [21b]", 4, "Ljubičasta"),
+            routes(220, "Sutjeska - Ilijaš - Lješevo [22]", 4, "Ljubičasta"),
+            routes(221, "Stup - Vogošća [22a]", 4, "Ljubičasta"),
+            routes(230, "Željeznička Stanica - Rajlovac [23]", 4, "Ljubičasta"),
+            routes(231, "Željeznička Stanica - Reljevo Dom [23a]", 4, "Svijetlo-plava"),
+            routes(233, "Otoka - Boljakov Potok [23c]", 4, "Ljubičasta"),
+            routes(260, "Stup - Ahatovići [26]", 4, "Ljubičasta"),
+            routes(261, "Stup - Dobroševići [26a]", 5, "Svijetlo-plava"),
+            routes(270, "Ilidža - Hrasnica [27]", 4, "Ljubičasta"),
+            routes(271, "Ilidža - Sokolović Kolonija [27a]", 4, "Ljubičasta"),
+            routes(272, "Ilidža - Kovači (Hrasnica) [27b]", 4, "Ljubičasta"),
+            routes(280, "Ilidža - Rakovica - Kobiljača [28]", 4, "Ljubičasta"),
+            routes(281, "Ilidža - Vrelo Bosne [28e]", 4, "Ljubičasta"),
+            routes(310, "Komercijala Dobrinja - Vijećnica [31e]", 3, "Plava"),
+            routes(311, "Dobrinja - Nedžarići [31]", 4, "Ljubičasta"),
+            routes(351, "Vogošća - Čevljanoviči [35b]", 5, "Svijetlo-plava"),
+            routes(390, "Nedžarići - Dobrinja 4 [39]", 4, "Ljubičasta"),
+            routes(391, "Otoka - Dobrinja 4 [39b]", 4, "Ljubičasta"),
+            routes(410, "Drvenija - Gornji Velešići [41]", 5, "Svijetlo-plava"),
+            routes(411, "Drvenija - Donji Velešići [41a]", 5, "Svijetlo-plava"),
+            routes(450, "Ilidža - Dejčići [45]", 5, "Svijetlo-plava"),
+            routes(451, "Ilidža - Garež [45b]", 5, "Svijetlo-plava"),
+            routes(2000, "Baščaršija - Aerodrom [200e]", 4, "Ljubičasta"),
+            routes(2001, "Autobuska Stanica - Ilijaš", 4, "Ljubičasta"),
+            routes(2002, "Autobuska Stanica - Kamenica [202]", 4, "Ljubičasta"),
+            routes(2003, "Autobuska Stanica - Raštelica [203]", 4, "Ljubičasta")
+        )
+        return routes
+
+
+    }
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SarajevoTransitApp</string>
+    <string name="map_icon_description">Stanice</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>

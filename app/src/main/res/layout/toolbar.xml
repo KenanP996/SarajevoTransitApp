@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:background="@color/blue"
+    android:layout_alignParentBottom="true">
+
+    <ImageView
+        android:id="@+id/homeButton"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/home2" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/ticketsButton"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/tickets" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/departuresButton"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/departure" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/favoriteRidesButton"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/favorite" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/white" />
+
+
+    <ImageView
+        android:id="@+id/infoDeskButton"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/info" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/profileButton"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/profile" />
+
+</LinearLayout>

@@ -9,6 +9,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.sarajevotransitapp.database.entities.stops
 import com.example.sarajevotransitapp.database.functions.allstations
+import com.example.sarajevotransitapp.functions.GeocodingService
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -17,6 +18,10 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class NajblizeStanice : AppCompatActivity(), OnMapReadyCallback {
 
@@ -24,9 +29,6 @@ class NajblizeStanice : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var googleMap: GoogleMap
 
     private lateinit var stationList: List<Station>
-
-    private var userLatitude: Double = 0.0
-    private var userLongitude: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,46 +42,6 @@ class NajblizeStanice : AppCompatActivity(), OnMapReadyCallback {
 
         // Retrieve the station list from the stoplist data class function
         stationList = retrieveStationList()
-
-        // Retrieve the user's latitude and longitude from the intent
-        userLatitude = intent.getDoubleExtra("latitude", 0.0)
-        userLongitude = intent.getDoubleExtra("longitude", 0.0)
-
-        requestLocationUpdates()
-    }
-
-    private fun requestLocationUpdates() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ),
-                LOCATION_PERMISSION_REQUEST_CODE
-            )
-            return
-        }
-        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-            location?.let {
-                val userLocation = LatLng(location.latitude, location.longitude)
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
-
-                // Find the closest station based on the user's location
-                val closestStation = findClosestStation(userLocation)
-                closestStation?.let {
-                    googleMap.addMarker(MarkerOptions().position(it.location).title(it.name))
-                    zoomToClosestStation(it)
-                }
-            }
-        }
     }
 
     private fun retrieveStationList(): List<Station> {
@@ -118,6 +80,7 @@ class NajblizeStanice : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(gMap: GoogleMap) {
         googleMap = gMap
+
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -136,10 +99,32 @@ class NajblizeStanice : AppCompatActivity(), OnMapReadyCallback {
             )
             return
         }
+
         googleMap.isMyLocationEnabled = true
 
         for (station in stationList) {
             googleMap.addMarker(MarkerOptions().position(station.location).title(station.name))
+        }
+
+        val streetName = intent.getStringExtra("streetName")
+
+        // launch a new coroutine in background and continue
+        GlobalScope.launch {
+            val latLng = GeocodingService(this@NajblizeStanice).getLatLongFromAddress(streetName)
+
+            // communicate with main thread
+            withContext(Dispatchers.Main) {
+                if (latLng != null) {
+                    val userLocation = latLng
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
+
+                    // Find the closest station based on the user's location
+                    val closestStation = findClosestStation(userLocation)
+                    closestStation?.let {
+                        zoomToClosestStation(it)
+                    }
+                }
+            }
         }
     }
 

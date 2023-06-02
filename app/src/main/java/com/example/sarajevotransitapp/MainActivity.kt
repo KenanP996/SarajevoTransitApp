@@ -1,57 +1,49 @@
 package com.example.sarajevotransitapp
-import NajblizeStanice
+
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.ads.MobileAds
-
+import com.google.android.gms.common.api.Status
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.net.PlacesClient
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var placesClient: PlacesClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainpage)
-        MobileAds.initialize(this) {}
 
-        val goButton: Button = findViewById(R.id.goButton)
+        // Initialize Places SDK
+        Places.initialize(applicationContext, "AIzaSyCn8YM46Qm7hIFVYl9sq_dj8y5HSnjOFbo")
+        placesClient = Places.createClient(this)
 
-        goButton.setOnClickListener {
-            val locationEditText: EditText = findViewById(R.id.locationEditText)
-            val destinationEditText: EditText = findViewById(R.id.destinationEditText)
+        val autocompleteFragment =
+            supportFragmentManager.findFragmentById(R.id.autocompleteFragment) as AutocompleteSupportFragment
 
-            val location = locationEditText.text.toString()
-            val destination = destinationEditText.text.toString()
+        autocompleteFragment.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
+        autocompleteFragment.setCountry("BA") // Restrict to Bosnia and Herzegovina
 
-            val intent = Intent(this, NajblizeStanice::class.java)
-            intent.putExtra("location", location)
-            intent.putExtra("destination", destination)
-            startActivity(intent)
+        autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(place: Place) {
+                val selectedStreet = place.name
+                val selectedLat = place.latLng?.latitude
+                val selectedLng = place.latLng?.longitude
 
-            Toast.makeText(this, "Looking for closest station", Toast.LENGTH_SHORT).show() // Handle button click event here
-            // Implement the logic to retrieve user's geolocation, find the closest station, etc.
-        }
+                val intent = Intent(this@MainActivity, NajblizeStanice::class.java)
+                intent.putExtra("streetName", selectedStreet)
+                intent.putExtra("latitude", selectedLat)
+                intent.putExtra("longitude", selectedLng)
+                startActivity(intent)
+            }
+
+            override fun onError(status: Status) {
+                // Handle error
+            }
+        })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

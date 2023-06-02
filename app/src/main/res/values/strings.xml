@@ -9,4 +9,10 @@
     <string name="go">Go</string>
     <string name="google_maps_placeholder">Google Maps Placeholder</string>
     <string name="title_activity_najblize_stanice">NajblizeStanice</string>
+    <string name="search">Search</string>
+    <string name="enter_street_name">Enter street name</string>
+    <string name="enter_street_name2">Enter street name</string>
+    <string name="search2">Search</string>
+    <string name="enter_a_street_name2">Enter a street name</string>
+    <string name="closest_stations">Closest Stations</string>
 </resources>

@@ -1,16 +1,11 @@
 package com.example.sarajevotransitapp
+import NajblizeStanice
+import android.content.Intent
 import android.os.Bundle
-import android.view.Surface
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.sarajevotransitapp.ui.theme.SarajevoTransitAppTheme
 import com.google.android.gms.ads.MobileAds
 
 
@@ -19,6 +14,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainpage)
         MobileAds.initialize(this) {}
+
+        val goButton: Button = findViewById(R.id.goButton)
+
+        goButton.setOnClickListener {
+            val locationEditText: EditText = findViewById(R.id.locationEditText)
+            val destinationEditText: EditText = findViewById(R.id.destinationEditText)
+
+            val location = locationEditText.text.toString()
+            val destination = destinationEditText.text.toString()
+
+            val intent = Intent(this, NajblizeStanice::class.java)
+            intent.putExtra("location", location)
+            intent.putExtra("destination", destination)
+            startActivity(intent)
+
+            Toast.makeText(this, "Looking for closest station", Toast.LENGTH_SHORT).show() // Handle button click event here
+            // Implement the logic to retrieve user's geolocation, find the closest station, etc.
+        }
     }
 }
 

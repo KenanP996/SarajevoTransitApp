@@ -4,4 +4,9 @@
     <string name="map_icon_description">Stanice</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="hello_world">Hello, World!</string>
+    <string name="enter_your_destination">Enter your destination</string>
+    <string name="enter_your_destination_2">Enter your destination:</string>
+    <string name="go">Go</string>
+    <string name="google_maps_placeholder">Google Maps Placeholder</string>
+    <string name="title_activity_najblize_stanice">NajblizeStanice</string>
 </resources>

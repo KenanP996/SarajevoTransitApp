@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="NajblizeStanice">
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="500dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Google Maps View -->
+
+        <fragment
+            android:id="@+id/mapFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/google_maps_placeholder" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Relevant Data about Stations -->
+        <!-- Add your desired views and components here -->
+
+    </LinearLayout>
+
+</LinearLayout>

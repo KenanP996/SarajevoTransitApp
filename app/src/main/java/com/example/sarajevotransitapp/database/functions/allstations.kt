@@ -4,6 +4,8 @@ import com.example.sarajevotransitapp.NajblizeStanice
 import com.example.sarajevotransitapp.database.entities.stops
 
 object allstations {
+
+
     fun stoplist(): List<stops> {
         val stops = listOf(
             stops(1, "Bascarsija", 43.86011835313401, 18.43140472455304),

@@ -32,4 +32,7 @@
     <string name="plussign">+</string>
     <string name="checkout">Checkout</string>
     <string name="title_activity_minibus">Minibus</string>
+    <string name="title_activity_route_types">RouteTypes</string>
+    <string name="title_activity_route">RouteActivity</string>
+    <string name="title_activity_map">MapActivity</string>
 </resources>

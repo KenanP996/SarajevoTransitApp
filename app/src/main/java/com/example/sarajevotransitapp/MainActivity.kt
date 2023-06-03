@@ -64,6 +64,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Transport::class.java)
             startActivity(intent)
         }
+        val departuresButton = findViewById<ImageButton>(R.id.departuresButton)
+        departuresButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, RouteTypes::class.java)
+            startActivity(intent)
+        }
 
     }
 

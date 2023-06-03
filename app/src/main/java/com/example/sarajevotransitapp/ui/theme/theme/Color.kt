@@ -1,4 +1,4 @@
-package com.example.sarajevotransitapp.ui.theme
+package com.example.sarajevotransitapp.ui.theme.theme
 
 import androidx.compose.ui.graphics.Color
 

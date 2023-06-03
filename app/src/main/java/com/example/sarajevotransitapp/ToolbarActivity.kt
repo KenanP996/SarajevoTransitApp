@@ -1,10 +1,10 @@
-package com.example.sarajevotransitapp.screens
+package com.example.sarajevotransitapp
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.sarajevotransitapp.R
+import com.example.sarajevotransitapp.screens.FavoriteRidesActivity
 
 class ToolbarActivity : AppCompatActivity(), ToolbarClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,13 +15,11 @@ class ToolbarActivity : AppCompatActivity(), ToolbarClickListener {
         val ticketsButton = findViewById<ImageView>(R.id.ticketsButton)
         val departuresButton = findViewById<ImageView>(R.id.departuresButton)
         val favoriteRidesButton = findViewById<ImageView>(R.id.favoriteRidesButton)
-        val infoDeskButton = findViewById<ImageView>(R.id.infoDeskButton)
 
         homeButton.setOnClickListener { onHomeClicked() }
         ticketsButton.setOnClickListener { onTicketsClicked() }
         departuresButton.setOnClickListener { onDeparturesClicked() }
         favoriteRidesButton.setOnClickListener { onFavoriteRidesClicked() }
-        infoDeskButton.setOnClickListener { onInfoDeskClicked() }
     }
 
     override fun onHomeClicked() {
@@ -37,8 +35,8 @@ class ToolbarActivity : AppCompatActivity(), ToolbarClickListener {
     }
 
     override fun onFavoriteRidesClicked() {
-        //val intent = Intent(this, FavouriteRidesActivity::class.java)
-        //startActivity(intent)
+        val intent = Intent(this@ToolbarActivity, FavoriteRidesActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onInfoDeskClicked() {

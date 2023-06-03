@@ -5,7 +5,7 @@ import com.example.sarajevotransitapp.database.entities.transport
 
 
 object transports {
-    fun transportlist(): transports {
+    //fun transportlist(): transports {
         val tot = listOf(
             transport(
                 1,
@@ -21,6 +21,6 @@ object transports {
             transport(4, "Autobus", "Razne bus linije gradske i prigradske"),
             transport(5, "Minibus", "Razne kraće linije gradskog i prigradskog saobracaja")
         )
-        return transports
-    }
+       // return transports
+   // }
 }

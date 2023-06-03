@@ -29,7 +29,11 @@
 
     <path
         android:pathData="M100,100a90,90 0,1 1,0 180a90,90 0,1 1,0 -180"
-        android:fillColor="#006699"/>
+        android:fillColor="#2B86B5"/>
+
+    <path
+        android:pathData="M100,100a60,0 0,1 1,0 180a90,90 0,1 1,0 -180"
+        android:fillColor="#ffff"/>
 
   </group>
 

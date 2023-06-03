@@ -3,11 +3,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- Header -->
     <include layout="@layout/header" />
 
-    <!-- Heart Icon -->
     <ImageView
+        android:id="@+id/heartImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/heart"

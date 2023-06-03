@@ -1,14 +1,21 @@
 package com.example.sarajevotransitapp.screens
 
 import android.os.Bundle
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.sarajevotransitapp.R
+
 
 
 class FavoriteRidesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.favourite_rides)
+        setContentView(com.example.sarajevotransitapp.R.layout.favourite_rides)
+
+        val heartImageView = findViewById<ImageView>(com.example.sarajevotransitapp.R.id.heartImageView)
+        val pulseAnimation: Animation = AnimationUtils.loadAnimation(this, com.example.sarajevotransitapp.R.anim.heart_anim)
+        heartImageView.startAnimation(pulseAnimation)
 
         /*// Get references to the favorite ride TextViews
         val favoriteRide1 = findViewById<TextView>(R.id.favorite_ride1)

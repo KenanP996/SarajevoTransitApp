@@ -4,43 +4,59 @@ plugins {
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
+
+
 android {
     namespace 'com.example.sarajevotransitapp'
     compileSdk 33
 
     defaultConfig {
         applicationId "com.example.sarajevotransitapp"
-        minSdk 21
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
+        compileSdkPreview = 'UpsideDownCake'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    android{
+        buildFeatures {
+            compose true
+            viewBinding true
+        }
+
+        composeOptions {
+            kotlinCompilerExtensionVersion = "1.4.7"
+        }
+
+        kotlinOptions{
+            jvmTarget = '1.8'
+        }
+    }
+
     buildFeatures {
-        compose true
         viewBinding true
+        dataBinding true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.2.0'
-    }
+
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
@@ -49,7 +65,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
     implementation 'androidx.activity:activity-compose:1.7.2'
@@ -60,12 +75,13 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.5.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "androidx.room:room-runtime:2.5.1"
-    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.opencsv:opencsv:5.5.2'
     implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'com.google.android.material:material:1.9.0'
     annotationProcessor "androidx.room:room-compiler:2.5.1"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -73,5 +89,9 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
-
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'com.android.tools.build:gradle-api:8.0.2'
 }
+
+
+

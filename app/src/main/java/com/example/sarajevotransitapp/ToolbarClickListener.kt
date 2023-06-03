@@ -1,4 +1,4 @@
-package com.example.sarajevotransitapp.screens
+package com.example.sarajevotransitapp
 
 interface ToolbarClickListener {
     fun onHomeClicked()

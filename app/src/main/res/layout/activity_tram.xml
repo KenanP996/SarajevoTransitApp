@@ -1,0 +1,56 @@
+<!-- activity_tram.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Tram">
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layoutButtonGroup" />
+
+    <LinearLayout
+        android:id="@+id/layoutButtonGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnDecreaseQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseQuantity"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvTicketQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btnIncreaseQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:text="+"
+            android:onClick="increaseQuantity" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/checkoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:text="Checkout"
+        android:onClick="checkout" />
+
+</RelativeLayout>

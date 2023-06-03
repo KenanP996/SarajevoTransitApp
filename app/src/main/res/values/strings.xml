@@ -15,4 +15,21 @@
     <string name="search2">Search</string>
     <string name="enter_a_street_name2">Enter a street name</string>
     <string name="closest_stations">Closest Stations</string>
+    <string name="order_summary">order summary</string>
+    <string name="cancel">cancel\n</string>
+    <string name="submit">submit\n</string>
+    <string name="closest_station">Closest Station</string>
+    <string name="navigation">Navigation</string>
+    <string name="title_activity_closest_stations">ClosestStations</string>
+    <string name="title_activity_tickets">Tickets</string>
+    <string name="title_activity_transport">Transport</string>
+    <string name="title_activity_ticket">Ticket</string>
+    <string name="title_activity_tram">Tram</string>
+    <string name="title_activity_trolleybus">Trolleybus</string>
+    <string name="title_activity_komercijala">Komercijala</string>
+    <string name="title_activity_busminibus">Busminibus</string>
+    <string name="title_activity_google_pay">GooglePayActivity</string>
+    <string name="plussign">+</string>
+    <string name="checkout">Checkout</string>
+    <string name="title_activity_minibus">Minibus</string>
 </resources>

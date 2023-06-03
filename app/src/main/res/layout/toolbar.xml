@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
-        android:padding="16dp"
+        android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:layout_alignParentBottom="true">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/homeButton"
             android:layout_width="0dp"
             android:layout_height="35dp"
-            android:layout_weight="1"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:src="@drawable/home2" />
 
         <View
@@ -24,12 +25,12 @@
             android:layout_height="match_parent"
             android:background="@android:color/white" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/ticketsButton"
             android:layout_width="0dp"
             android:layout_height="35dp"
-            android:layout_weight="1"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:src="@drawable/tickets" />
 
         <View
@@ -37,12 +38,12 @@
             android:layout_height="match_parent"
             android:background="@android:color/white" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/departuresButton"
             android:layout_width="0dp"
             android:layout_height="35dp"
-            android:layout_weight="1"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:src="@drawable/departure" />
 
         <View
@@ -50,16 +51,21 @@
             android:layout_height="match_parent"
             android:background="@android:color/white" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/favoriteRidesButton"
             android:layout_width="0dp"
             android:layout_height="35dp"
-            android:layout_weight="1"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:src="@drawable/favorite" />
 
-
+        <ImageButton
+            android:id="@+id/mapa"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/mapa" />
 
     </LinearLayout>
-</RelativeLayout>
-
+</LinearLayout>

@@ -3,7 +3,7 @@ package com.example.sarajevotransitapp.database.entities
 import androidx.room.*
 import com.example.sarajevotransitapp.database.entities.transport
 
-@Entity(tableName = "tickets",
+@Entity(tableName = "ticket_options",
     foreignKeys = [
         ForeignKey(
             entity = transport::class,

@@ -2,8 +2,8 @@ package com.example.sarajevotransitapp.database.functions
 
 import com.example.sarajevotransitapp.database.entities.tickets
 
-object tickets {
-    //fun ticket_types() : List<tickets> {
+object ticket_options {
+    fun ticket_types() : List<tickets> {
         val tickets = listOf(
             tickets(10, 1, "Karta Tramvajska (Odrasli, jedno)", 1.6),
             tickets(11, 1, "Karta Tramvajska (Dječija, jedno)", 1.2),
@@ -19,6 +19,6 @@ object tickets {
             tickets(40, 4, "Karta Autobuska", 1.6),
             tickets(50, 5, "Karta Minibus", 1.6)
         )
-    /*    return tickets
-    }*/
+        return tickets
+    }
 }

@@ -2,6 +2,7 @@ package com.example.sarajevotransitapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainpage)
 
+
         // Initialize Places SDK
         Places.initialize(applicationContext, "AIzaSyCn8YM46Qm7hIFVYl9sq_dj8y5HSnjOFbo")
         placesClient = Places.createClient(this)
@@ -25,7 +27,13 @@ class MainActivity : AppCompatActivity() {
         val autocompleteFragment =
             supportFragmentManager.findFragmentById(R.id.autocompleteFragment) as AutocompleteSupportFragment
 
-        autocompleteFragment.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
+        autocompleteFragment.setPlaceFields(
+            listOf(
+                Place.Field.ID,
+                Place.Field.NAME,
+                Place.Field.LAT_LNG
+            )
+        )
         autocompleteFragment.setCountry("BA") // Restrict to Bosnia and Herzegovina
 
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
@@ -45,5 +53,20 @@ class MainActivity : AppCompatActivity() {
                 // Handle error
             }
         })
+
+        val closestStationsButton = findViewById<ImageButton>(R.id.mapa)
+        closestStationsButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, ClosestStations::class.java)
+            startActivity(intent)
+        }
+        val ticketsButton = findViewById<ImageButton>(R.id.ticketsButton)
+        ticketsButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, Transport::class.java)
+            startActivity(intent)
+        }
+
     }
+
 }
+
+

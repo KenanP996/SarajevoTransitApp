@@ -2,9 +2,7 @@ package com.example.sarajevotransitapp.database.functions
 
 import com.example.sarajevotransitapp.database.entities.transport
 
-
-
-object transports {
+object transport {
     fun transportlist(): List<transport> {
         val tot = listOf(
             transport(

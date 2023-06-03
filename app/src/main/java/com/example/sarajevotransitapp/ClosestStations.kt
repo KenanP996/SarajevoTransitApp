@@ -5,12 +5,14 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.sarajevotransitapp.database.entities.stops
 import com.example.sarajevotransitapp.database.functions.allstations
-import com.example.sarajevotransitapp.functions.GeocodingService
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -20,38 +22,75 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class NajblizeStanice : AppCompatActivity(), OnMapReadyCallback {
+class ClosestStations : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var googleMap: GoogleMap
 
-    private lateinit var stationList: List<Station>
+    private var stationList: List<Station> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.closest_locations)
 
 
-        val mapFragment =
-            supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+
+
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        // Retrieve the station list from the stoplist data class function
-        stationList = retrieveStationList()
+        fetchCurrentLocation()
     }
 
-    private fun retrieveStationList(): List<Station> {
-        val stopsList: List<stops> = allstations.stoplist()
+    private fun fetchCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+            return
+        }
 
-        // Create a list of Station objects from the stops list
-        return stopsList.map { stop ->
-            Station(stop.stop_name, LatLng(stop.stop_lat, stop.stop_lon))
+        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+            location?.let {
+                val userLocation = LatLng(location.latitude, location.longitude)
+                findAndDisplayClosestStation(userLocation)
+            } ?: run {
+                Toast.makeText(
+                    this,
+                    "Failed to retrieve location. Please make sure your GPS is turned on.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
+    private fun findAndDisplayClosestStation(userLocation: LatLng) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val stopsList: List<stops> = allstations.stoplist()
+            stationList = stopsList.map { stop -> Station(stop.stop_name, LatLng(stop.stop_lat, stop.stop_lon)) }
+
+            val closestStation = findClosestStation(userLocation)
+
+            withContext(Dispatchers.Main) {
+                if (closestStation != null) {
+                    zoomToClosestStation(closestStation)
+                    googleMap.addMarker(MarkerOptions().position(closestStation.location).title(closestStation.name))
+                } else {
+                    Toast.makeText(
+                        this@ClosestStations,
+                        "No stations found nearby.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
         }
     }
 
@@ -86,48 +125,13 @@ class NajblizeStanice : AppCompatActivity(), OnMapReadyCallback {
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ),
-                LOCATION_PERMISSION_REQUEST_CODE
-            )
+            fetchCurrentLocation()
             return
         }
 
         googleMap.isMyLocationEnabled = true
-
-        for (station in stationList) {
-            googleMap.addMarker(MarkerOptions().position(station.location).title(station.name))
-        }
-
-        val streetName = intent.getStringExtra("streetName")
-
-        // launch a new coroutine in background and continue
-        GlobalScope.launch {
-            val latLng = GeocodingService(this@NajblizeStanice).getLatLongFromAddress(streetName)
-
-            // communicate with main thread
-            withContext(Dispatchers.Main) {
-                if (latLng != null) {
-                    val userLocation = latLng
-                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
-
-                    // Find the closest station based on the user's location
-                    val closestStation = findClosestStation(userLocation)
-                    closestStation?.let {
-                        zoomToClosestStation(it)
-                    }
-                }
-            }
-        }
     }
 
     data class Station(val name: String, val location: LatLng)
@@ -136,5 +140,5 @@ class NajblizeStanice : AppCompatActivity(), OnMapReadyCallback {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 123
     }
 
-}
 
+}

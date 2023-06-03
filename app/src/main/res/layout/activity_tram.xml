@@ -1,16 +1,17 @@
-<!-- activity_tram.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".Tram">
+    tools:context=".Tram"
+    android:background="@drawable/gradient_background">
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/layoutButtonGroup" />
+        android:layout_width="wrap_content"
+        android:layout_height="589dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="10dp"/>
 
     <LinearLayout
         android:id="@+id/layoutButtonGroup"
@@ -24,20 +25,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="decreaseQuantity"
+            android:background="@drawable/light_round_button"
+            android:textColor="@color/dark_blue"
             android:text="-" />
-
-        <TextView
-            android:id="@+id/tvTicketQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="1" />
 
         <Button
             android:id="@+id/btnIncreaseQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="200dp"
+            android:background="@drawable/light_round_button"
+            android:textColor="@color/dark_blue"
             android:text="+"
             android:onClick="increaseQuantity" />
 
@@ -50,7 +48,23 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
+        android:layout_centerHorizontal="true"
         android:text="Checkout"
+        android:background="@drawable/round_button"
+        android:textColor="@color/white"
         android:onClick="checkout" />
+
+    <TextView
+        android:id="@+id/tvTicketQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layoutButtonGroup"
+        android:layout_below="@+id/listView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:text="1"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/dark_blue" />
 
 </RelativeLayout>

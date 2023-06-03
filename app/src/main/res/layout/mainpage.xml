@@ -2,23 +2,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/gradient_background">
+
+    <include
+        layout="@layout/header"
+        android:id="@+id/header" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:text="Please enter location/street"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/poppins_bold" />
+
     <fragment
         android:id="@+id/autocompleteFragment"
         android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_below="@id/header"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:hint="@string/enter_a_street_name2" />
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp" />
 
 </RelativeLayout>
-

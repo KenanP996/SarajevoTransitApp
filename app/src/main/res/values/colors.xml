@@ -10,5 +10,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#006699</color>
     <color name="light_blue">#C0D5E1</color>
+    <color name="medium_blue">#87A6B8</color>
+    <color name="dark_blue">#0F202B</color>
     <color name="gray">#CCCCCC</color>
 </resources>

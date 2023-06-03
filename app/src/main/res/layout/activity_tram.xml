@@ -1,56 +1,72 @@
-<!-- activity_tram.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".Tram">
+    tools:context=".Tram"
+    android:background="@drawable/gradient_background"
+    android:orientation="vertical">
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/layoutButtonGroup" />
+        android:layout_width="wrap_content"
+        android:layout_height="589dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/tvTicketQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/listView"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="13dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="1"
+        android:textColor="@color/dark_blue" />
 
     <LinearLayout
         android:id="@+id/layoutButtonGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
+
         <Button
             android:id="@+id/btnDecreaseQuantity"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/light_round_button"
             android:onClick="decreaseQuantity"
-            android:text="-" />
+            android:text="-"
+            android:textColor="@color/dark_blue" />
 
-        <TextView
-            android:id="@+id/tvTicketQuantity"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/checkoutButton"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="1" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/round_button"
+            android:onClick="checkout"
+            android:text="Checkout"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnIncreaseQuantity"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/light_round_button"
+            android:onClick="increaseQuantity"
             android:text="+"
-            android:onClick="increaseQuantity" />
+            android:textColor="@color/dark_blue" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/checkoutButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:text="Checkout"
-        android:onClick="checkout" />
 
-</RelativeLayout>
+
+</LinearLayout>

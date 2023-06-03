@@ -3,19 +3,17 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="bottom">
+    android:layout_gravity="bottom"
+    android:background="@color/dark_blue"
+    android:orientation="horizontal"
+    android:padding="12dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:orientation="horizontal"
-        android:padding="16dp">
+
 
         <ImageButton
             android:id="@+id/homeButton"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:src="@drawable/home2" />
@@ -28,7 +26,7 @@
         <ImageButton
             android:id="@+id/ticketsButton"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:src="@drawable/tickets" />
@@ -41,7 +39,7 @@
         <ImageButton
             android:id="@+id/departuresButton"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:src="@drawable/departure" />
@@ -54,18 +52,23 @@
         <ImageButton
             android:id="@+id/favoriteRidesButton"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:src="@drawable/favorite" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" />
+
         <ImageButton
             android:id="@+id/mapa"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:src="@drawable/mapa" />
+            android:src="@drawable/location" />
 
     </LinearLayout>
-</LinearLayout>
+

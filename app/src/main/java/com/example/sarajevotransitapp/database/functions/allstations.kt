@@ -1,5 +1,6 @@
 package com.example.sarajevotransitapp.database.functions
 
+import com.example.sarajevotransitapp.NajblizeStanice
 import com.example.sarajevotransitapp.database.entities.stops
 
 object allstations {

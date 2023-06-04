@@ -10,16 +10,16 @@ object transports {
             transport(
                 1,
                 "Tramvaj",
-                "Sarajevski tramvaji su tramvajski sistem u glavnom gradu Bosne i Hercegovine Sarajevu. Vlasnik tramvaja je Javno komunalno preduzeće – Gradski saobraćaj Sarajevo (GRAS), koje ujedno i organizuje javni promet u Sarajevu."
+                "\nVlasnik tramvaja je Javno komunalno preduzeće – Gradski saobraćaj Sarajevo (GRAS)."
             ),
             transport(
                 2,
                 "Trolejbus",
-                "Sarajevski trolejbusi su trolejbuski sistem u glavnom gradu Bosne i Hercegovine, Sarajevu. Vlasnik trolejbusa je Javno komunalno preduzeće – Gradski saobraćaj Sarajevo"
+                " \nVlasnik trolejbusa je Javno komunalno preduzeće – Gradski saobraćaj Sarajevo (GRAS)"
             ),
-            transport(3, "Komercijala", "31E autobus (Dobrinja  - Vijecnica) - Brza Linija"),
-            transport(4, "Autobus", "Razne bus linije gradske i prigradske"),
-            transport(5, "Minibus", "Razne kraće linije gradskog i prigradskog saobracaja")
+            transport(3, "Komercijala", "\n31E autobus (Dobrinja  - Vijecnica) - Brza Linija"),
+            transport(4, "Autobus", "\nRazne bus linije gradske i prigradske"),
+            transport(5, "Minibus", "\nRazne kraće linije gradskog i prigradskog saobracaja")
         )
         return tot
     }

@@ -17,7 +17,7 @@
         android:layout_marginStart="20dp"
         android:text="Please enter location/street"
         android:textColor="@color/dark_blue"
-        android:fontFamily="@font/poppins_bold" />
+        android:fontFamily="@font/poppins_regular" />
 
     <fragment
         android:id="@+id/autocompleteFragment"

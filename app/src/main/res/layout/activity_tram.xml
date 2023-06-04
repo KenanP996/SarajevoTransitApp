@@ -1,77 +1,101 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".Tram"
-    android:background="@drawable/gradient_background"
-    android:orientation="vertical">
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/tvSelectedTicket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Selected ticket: "
-        android:textColor="@color/dark_blue" />
-
-    <TextView
-        android:id="@+id/tvTotalPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Total Price = 0.00KM"
-        android:textColor="@color/dark_blue" />
+    android:background="@drawable/gradient_background">
 
     <LinearLayout
-        android:id="@+id/layoutButtonGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnDecreaseQuantity"
-            android:layout_width="90dp"
+        <include layout="@layout/header" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="wrap_content"
+            android:layout_height="411dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="17dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvSelectedTicket"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/light_round_button"
-            android:onClick="decreaseQuantity"
-            android:text="-"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="49dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Selected ticket: "
+            android:textColor="@color/dark_blue"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Total Price = 0.00KM"
             android:textColor="@color/dark_blue" />
 
-        <Button
-            android:id="@+id/checkoutButton"
-            android:layout_width="180dp"
+        <LinearLayout
+            android:id="@+id/layoutButtonGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/round_button"
-            android:onClick="checkout"
-            android:text="Checkout"
-            android:textColor="@color/white" />
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
 
-        <Button
-            android:id="@+id/btnIncreaseQuantity"
-            android:layout_width="90dp"
+            <Button
+                android:id="@+id/btnDecreaseQuantity"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:background="@drawable/light_round_button"
+                android:onClick="decreaseQuantity"
+                android:text="-"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/dark_blue"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/checkoutButton"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/round_button"
+                android:onClick="checkout"
+                android:text="Checkout"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/white"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnIncreaseQuantity"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/light_round_button"
+                android:onClick="increaseQuantity"
+                android:text="+"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/dark_blue"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <include layout="@layout/toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/light_round_button"
-            android:onClick="increaseQuantity"
-            android:text="+"
-            android:textColor="@color/dark_blue" />
+            android:layout_gravity="bottom" />
 
     </LinearLayout>
-
-
-</LinearLayout>
+</ScrollView>

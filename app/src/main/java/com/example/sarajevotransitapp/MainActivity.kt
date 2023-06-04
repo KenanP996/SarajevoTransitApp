@@ -3,7 +3,9 @@ package com.example.sarajevotransitapp
 import android.content.Intent
 import android.os.Bundle
 import android.view.Window
+import android.view.animation.AnimationUtils
 import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places

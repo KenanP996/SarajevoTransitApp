@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/gradient_background">
+    android:background="@color/white">
 
     <include
         layout="@layout/header"
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/header"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:layout_marginStart="20dp"
         android:text="Please enter location/street"
         android:textColor="@color/dark_blue"
@@ -25,10 +25,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/header"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/enter_a_street_name2" />
+
+
+    <ImageView
+        android:id="@+id/robot"
+        android:layout_width="wrap_content"
+        android:layout_height="380dp"
+        android:src="@drawable/robot"
+        android:layout_marginTop="270dp"/>
 
     <include
         android:id="@+id/toolbar"

@@ -17,7 +17,7 @@ import com.example.sarajevotransitapp.database.functions.routetypes
 class RouteTypes : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
 
         setContentView(R.layout.activity_route_types)
 

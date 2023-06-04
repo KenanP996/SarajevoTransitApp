@@ -16,60 +16,62 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".BaseActivity"
+            android:exported="false"
+            android:label="@string/title_activity_toolbar"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
             android:name=".MapActivity"
-            android:theme="@style/Theme.AppCompat.Light">
-        </activity>
-
-
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity
             android:name=".RouteActivity"
             android:exported="false"
             android:label="@string/title_activity_route"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".RouteTypes"
             android:exported="false"
             android:label="@string/title_activity_route_types"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Minibus"
             android:exported="false"
             android:label="@string/title_activity_minibus"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".GooglePayActivity"
             android:exported="false"
             android:label="@string/title_activity_google_pay"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Busminibus"
             android:exported="false"
             android:label="@string/title_activity_busminibus"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Komercijala"
             android:exported="false"
             android:label="@string/title_activity_komercijala"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Trolleybus"
             android:exported="false"
             android:label="@string/title_activity_trolleybus"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Tram"
             android:exported="false"
             android:label="@string/title_activity_tram"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Transport"
             android:exported="false"
             android:label="@string/title_activity_transport"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
@@ -83,12 +85,12 @@
         <activity
             android:name=".NajblizeStanice"
             android:label="closest_locations"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".ClosestStations"
             android:exported="false"
             android:label="@string/title_activity_closest_stations"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

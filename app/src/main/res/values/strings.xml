@@ -37,4 +37,5 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="total_price">Total Price: %.2f</string>
     <string name="total_price_2f">Total Price: %.2f</string>
+    <string name="title_activity_toolbar">Toolbar</string>
 </resources>

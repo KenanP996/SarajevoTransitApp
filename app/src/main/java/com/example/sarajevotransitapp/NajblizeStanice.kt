@@ -34,7 +34,7 @@ class NajblizeStanice : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
 
         setContentView(R.layout.closest_locations)
 

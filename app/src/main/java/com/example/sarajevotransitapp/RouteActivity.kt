@@ -11,13 +11,13 @@ import com.example.sarajevotransitapp.database.entities.routes
 import com.example.sarajevotransitapp.database.functions.routestops
 import com.example.sarajevotransitapp.database.functions.allstations
 
-class RouteActivity : AppCompatActivity() {
+class RouteActivity : BaseActivity() {
 
     private val REQUEST_CODE_MAP = 1 // Request code for starting the MapActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
 
         setContentView(R.layout.activity_route)
 

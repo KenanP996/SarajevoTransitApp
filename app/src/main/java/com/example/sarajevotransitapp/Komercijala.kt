@@ -6,6 +6,7 @@ import android.view.View
 import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
@@ -42,6 +43,31 @@ class Komercijala : AppCompatActivity() {
             selectTicket(selectedTicket!!)
             // Perform action with selected ticket price and quantity
             // We don't immediately buy the ticket, we wait for user to adjust quantity
+        }
+
+        val homeButton = findViewById<ImageButton>(R.id.homeButton)
+        val ticketsButton = findViewById<ImageButton>(R.id.ticketsButton)
+        val departuresButton = findViewById<ImageButton>(R.id.departuresButton)
+
+        homeButton.setOnClickListener {
+            val intent = Intent(this@Komercijala, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        ticketsButton.setOnClickListener {
+            val intent = Intent(this@Komercijala, Transport::class.java)
+            startActivity(intent)
+        }
+
+        departuresButton.setOnClickListener {
+            val intent = Intent(this@Komercijala, RouteTypes::class.java)
+            startActivity(intent)
+        }
+
+        val closestStationsButton = findViewById<ImageButton>(R.id.mapa)
+        closestStationsButton.setOnClickListener {
+            val intent = Intent(this@Komercijala, MapActivity::class.java)
+            startActivity(intent)
         }
     }
 

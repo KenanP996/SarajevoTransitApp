@@ -50,7 +50,7 @@ class Transport : AppCompatActivity() {
                 val intent = Intent(this, Busminibus::class.java)
                 startActivity(intent)
 
-            // Handle other transports accordingly
+                // Handle other transports accordingly
                 Toast.makeText(
                     this,
                     "Selected transport: ${selectedTransport.transport_name}",
@@ -61,4 +61,3 @@ class Transport : AppCompatActivity() {
         }
     }
 }
-

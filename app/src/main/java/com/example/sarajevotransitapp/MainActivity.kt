@@ -6,6 +6,7 @@ import android.view.Window
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
@@ -59,21 +60,35 @@ class MainActivity : BaseActivity() {
             }
         })
 
+
+
+
+        val homeButton = findViewById<ImageButton>(R.id.homeButton)
+        val ticketsButton = findViewById<ImageButton>(R.id.ticketsButton)
+        val departuresButton = findViewById<ImageButton>(R.id.departuresButton)
+
+        homeButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        ticketsButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, Transport::class.java)
+            startActivity(intent)
+        }
+
+        departuresButton.setOnClickListener {
+                val intent = Intent(this@MainActivity, RouteTypes::class.java)
+                startActivity(intent)
+        }
+
         val closestStationsButton = findViewById<ImageButton>(R.id.mapa)
         closestStationsButton.setOnClickListener {
             val intent = Intent(this@MainActivity, ClosestStations::class.java)
             startActivity(intent)
         }
-        val ticketsButton = findViewById<ImageButton>(R.id.ticketsButton)
-        ticketsButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, Transport::class.java)
-            startActivity(intent)
-        }
-        val departuresButton = findViewById<ImageButton>(R.id.departuresButton)
-        departuresButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, RouteTypes::class.java)
-            startActivity(intent)
-        }
+
+
 
     }
 

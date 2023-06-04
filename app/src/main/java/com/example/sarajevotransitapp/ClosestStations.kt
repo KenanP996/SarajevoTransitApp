@@ -26,7 +26,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ClosestStations : BaseActivity(), OnMapReadyCallback {
+class ClosestStations : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var googleMap: GoogleMap
@@ -48,6 +48,9 @@ class ClosestStations : BaseActivity(), OnMapReadyCallback {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         fetchCurrentLocation()
+
+
+
     }
 
     private fun fetchCurrentLocation() {

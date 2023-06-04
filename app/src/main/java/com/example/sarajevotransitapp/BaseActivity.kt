@@ -20,7 +20,7 @@ open class BaseActivity : AppCompatActivity() {
         val homeButton = toolbar.findViewById<ImageButton>(R.id.homeButton)
         val ticketsButton = toolbar.findViewById<ImageButton>(R.id.ticketsButton)
         val departuresButton = toolbar.findViewById<ImageButton>(R.id.departuresButton)
-        val mapaButton = toolbar.findViewById<ImageButton>(R.id.mapa)
+        val closestStationButton = toolbar.findViewById<ImageButton>(R.id.mapa)
 
         // Set click listeners for the toolbar buttons
         homeButton.setOnClickListener {
@@ -39,7 +39,7 @@ open class BaseActivity : AppCompatActivity() {
         }
 
 
-        mapaButton.setOnClickListener {
+        closestStationButton.setOnClickListener {
             // Handle map button click
             onMapButtonClicked()
         }

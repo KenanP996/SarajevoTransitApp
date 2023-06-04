@@ -56,4 +56,3 @@ class RouteActivity : BaseActivity() {
 
 
 }
-

@@ -1,8 +1,10 @@
 package com.example.sarajevotransitapp
 
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.Window
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sarajevotransitapp.database.entities.routes
@@ -10,8 +12,13 @@ import com.example.sarajevotransitapp.database.functions.routestops
 import com.example.sarajevotransitapp.database.functions.allstations
 
 class RouteActivity : AppCompatActivity() {
+
+    private val REQUEST_CODE_MAP = 1 // Request code for starting the MapActivity
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_route)
 
         val selectedRoute = intent?.getParcelableExtra<routes>("route")
@@ -38,12 +45,15 @@ class RouteActivity : AppCompatActivity() {
                         putExtra("routeId", routeId) // Pass the routeId to the MapActivity
                     }
 
+                    // Start the MapActivity
                     startActivity(mapIntent)
+
+
                 }
             }
         }
-
-
     }
+
+
 }
 

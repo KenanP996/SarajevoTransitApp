@@ -35,4 +35,6 @@
     <string name="title_activity_route_types">RouteTypes</string>
     <string name="title_activity_route">RouteActivity</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="total_price">Total Price: %.2f</string>
+    <string name="total_price_2f">Total Price: %.2f</string>
 </resources>

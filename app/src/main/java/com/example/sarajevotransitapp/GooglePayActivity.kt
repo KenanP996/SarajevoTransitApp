@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.wallet.*
@@ -15,6 +16,8 @@ class GooglePayActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_google_pay)
 
         // Create a PaymentsClient instance

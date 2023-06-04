@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
@@ -16,6 +17,8 @@ import com.example.sarajevotransitapp.database.functions.routetypes
 class RouteTypes : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_route_types)
 
         val listView: ListView = findViewById(R.id.list_view)

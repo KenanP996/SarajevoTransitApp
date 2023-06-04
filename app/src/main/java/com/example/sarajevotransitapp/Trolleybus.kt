@@ -1,9 +1,9 @@
 package com.example.sarajevotransitapp
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
@@ -18,11 +18,14 @@ class Trolleybus : AppCompatActivity() {
     private lateinit var listView: ListView
     private lateinit var ticketAdapter: ArrayAdapter<String>
     private lateinit var tramTicketTypes: List<tickets>
-    private var ticketQuantity: Int = 1
+    private var selectedTicket: tickets? = null
+    private val selectedTicketsMap: MutableMap<tickets, Int> = mutableMapOf()
     private var totalTicketPrice: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
+
         setContentView(R.layout.activity_tram)
 
         listView = findViewById(R.id.listView)
@@ -34,11 +37,11 @@ class Trolleybus : AppCompatActivity() {
         listView.adapter = ticketAdapter
 
         listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val selectedTicket = tramTicketTypes[position]
-            val ticketPrice = selectedTicket.ticket_price
-
+            selectedTicket = tramTicketTypes[position]
+            selectedTicketsMap.putIfAbsent(selectedTicket!!, 0)
+            selectTicket(selectedTicket!!)
             // Perform action with selected ticket price and quantity
-            buyTicket(selectedTicket, ticketQuantity)
+            // We don't immediately buy the ticket, we wait for user to adjust quantity
         }
     }
 
@@ -46,34 +49,38 @@ class Trolleybus : AppCompatActivity() {
         return ticket_options.ticket_types().filter { it.tot_id == 2 }
     }
 
-    private fun buyTicket(ticket: tickets, quantity: Int) {
-        val totalPrice = ticket.ticket_price * quantity
-        val message = "Ticket: ${ticket.ticket_desc}\nQuantity: $quantity\nTotal Price: $totalPrice"
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-
-        totalTicketPrice += totalPrice
-    }
-
     fun increaseQuantity(view: View) {
-        ticketQuantity++
-        updateTicketQuantityUI()
-    }
-
-    fun decreaseQuantity(view: View) {
-        if (ticketQuantity > 1) {
-            ticketQuantity--
-            updateTicketQuantityUI()
+        selectedTicket?.let {
+            val currentQuantity = selectedTicketsMap.getOrDefault(it, 0)
+            selectedTicketsMap[it] = currentQuantity + 1
+            totalTicketPrice += it.ticket_price
+            updateTotalPriceUI()
         }
     }
 
-    private fun updateTicketQuantityUI() {
-        val ticketQuantityTextView = findViewById<TextView>(R.id.tvTicketQuantity)
-        ticketQuantityTextView.text = ticketQuantity.toString()
+    fun decreaseQuantity(view: View) {
+        selectedTicket?.let {
+            val currentQuantity = selectedTicketsMap.getOrDefault(it, 0)
+            if (currentQuantity > 0) {
+                selectedTicketsMap[it] = currentQuantity - 1
+                totalTicketPrice -= it.ticket_price
+                updateTotalPriceUI()
+            }
+        }
     }
 
+    private fun updateTotalPriceUI() {
+        val totalPriceTextView = findViewById<TextView>(R.id.tvTotalPrice)
+        totalPriceTextView.text = getString(R.string.total_price, totalTicketPrice)
+    }
     fun checkout(view: View) {
         val intent = Intent(this, GooglePayActivity::class.java)
         intent.putExtra("totalTicketPrice", totalTicketPrice)
         startActivity(intent)
+    }
+
+    private fun selectTicket(ticket: tickets) {
+        val selectedTicketTextView = findViewById<TextView>(R.id.tvSelectedTicket)
+        selectedTicketTextView.text = "Selected ticket: ${ticket.ticket_desc}"
     }
 }

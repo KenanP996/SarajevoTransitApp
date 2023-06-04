@@ -55,7 +55,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-
+        val sydney = LatLng(-34.0, 151.0)
+        map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         // Add markers for the stops on the map
         for (stop in filteredStops) {
             val stopName = stop.stop_name
@@ -63,6 +65,13 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             val longitude = stop.stop_lon
             val location = LatLng(latitude, longitude)
             map.addMarker(MarkerOptions().position(location).title(stopName))
+        }
+
+        // Move the camera to the first stop if available
+        if (filteredStops.isNotEmpty()) {
+            val firstStop = filteredStops.first()
+            val firstLocation = LatLng(firstStop.stop_lat, firstStop.stop_lon)
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(firstLocation, DEFAULT_ZOOM))
         }
 
         // Check location permission
@@ -142,13 +151,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
             }
         }
-        fun onBackPressed() {
-            val intent = Intent(this, RouteActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+
 
     }
 
 }
-

@@ -2,6 +2,7 @@ package com.example.sarajevotransitapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.ListView
@@ -14,6 +15,8 @@ class Transport : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.transport)
 
         val listView: ListView = findViewById(R.id.listView)

@@ -2,6 +2,7 @@ package com.example.sarajevotransitapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Window
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.common.api.Status
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.mainpage)
 
 
